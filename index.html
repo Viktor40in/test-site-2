@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="./icons/favicon.ico" type="image/x-icon">
+    <title>Союз</title>
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-container">
+          <a href="#" class="logo">
+            <img src="./roll-image/logo.png" alt="Логотип компании со слоганом">
+          </a>
+          <nav class="main-nav">
+            <ul class="nav-list">
+              <li><a href="#section2">Наши услуги</a></li>
+              <li><a href="#section3">Свяжитесь с нами</a></li>
+              <li><a href="#section4">Документы</a></li>
+              <li><a href="#section5">Контакты</a></li>
+            </ul>
+          </nav>
+          <div class="header-contacts">
+              <a href="tel:+7 (921) 271-63-70" class="contact-phone">+7 (921) 271-63-70</a>
+              <a href="mailto:soyuz.ooo@yandex.ru" class="contact-email">soyuz.ooo@yandex.ru</a>
+          </div>
+        </div>
+    </header>
+
+    <section class="welcome-info cat" id="section1">
+        <div class="hero-content">
+            <h1 class="hero-title">Группа компаний СОЮЗ</h1>
+            <p class="hero-subtitle">Заботимся о Вашей безопасности с 2006 года</p>
+            <p class="hero-subtitle sub experience">Опыт работы больше 15 лет</p>
+            <p class="hero-subtitle sub varranty">Гарантия качества</p>
+            <p class="hero-subtitle sub responsibility">Ответственность за результат</p>
+            <p class="hero-subtitle sub modern">Применение современных решений</p>
+            <p class="hero-subtitle sub allday">Обслуживание 24/7</p>
+        </div>
+    </section>
+
+    <section id="section2" class="info-section features" >
+        <div class="container">
+            <img src="./roll-image/firebreak_tank.jpg" alt="Изображение" class="blended-image">
+        </div>
+        <div class="services-container">
+          <h2 class="services-title">Наши услуги</h2>
+          <div class="services-rotator">
+            <div class="service-item active">
+              <p>Cистемы технических средств охраны</p>
+              <p>Cистемы автоматической пожарной сигнализации</p>
+              <p>Системы видеонаблюдения</p>
+              <p>Перезарядка огнетушителей</p>
+            </div>
+            <div class="service-item">
+              <p>Монтаж устройств электрических и иных сетей управления системами
+                жизнеобеспечения, в т.ч. газоочистка, вентиляция и
+                дымоудаление</p>
+              <p>Слаботочные сети: телефонизация, локальные сети ЭВМ</p>
+              <p>Системы контроля доступа</p>
+              <p>Услуги электротехнической лаборатории</p>
+            </div>
+          </div>
+        </div>
+    </section>
+    <section class="contact-section mail" id="section3">
+        <div class="contact-container">
+            <h2 class="section-title">Свяжитесь с нами</h2>
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <input type="tel" id="phone" name="phone" placeholder="Ваш телефон" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" name="email" placeholder="Ваш email" required>
+                </div>
+                <button type="submit" class="submit-btn">Отправить</button>
+            </form>
+        </div>
+    </section>
+    <section class="gallery-section" id="section4">
+      <h2 class="section-title">Лицензия МЧС</h2>
+      
+      <div class="content-wrapper">
+        <!-- Левый блок с текстом -->
+        <div class="text-block">
+          <p><strong>Дата выдачи: </strong>24 марта 2014</p>
+          <p><strong>Номер: </strong>51-Б/00007</p>
+        </div>
+        
+        <!-- Правый блок с галереей -->
+        <div class="gallery-block">
+          <div class="thumbnail-container">
+            <img src="./docs-image/License1.jpg" alt="Работа 1" class="thumbnail" data-full="./docs-image/License1.jpg">
+            <img src="./docs-image/License2.jpg" alt="Работа 2" class="thumbnail" data-full="./docs-image/License2.jpg">
+          </div>
+          
+          <!-- Модальное окно -->
+          <div class="modal" id="imageModal">
+            <span class="close-btn">&times;</span>
+            <img class="modal-content" id="modalImage">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contacts-section" id="section5">
+      <div class="contacts-container">
+        <!-- Левая часть - контакты -->
+        <div class="contacts-info">
+          <h2 class="section-title">Контакты</h2>
+          
+          <div class="contact-item">
+            <i class="fas fa-phone-alt contact-icon"></i>
+            <a href="tel:+79212716370" class="contact-link">+7 (921) 271-63-70</a>
+          </div>
+          
+          <div class="contact-item">
+            <i class="fas fa-envelope contact-icon"></i>
+            <a href="mailto:soyuz.ooo@yandex.ru" class="contact-link">soyuz.ooo@yandex.ru</a>
+          </div>
+          
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt contact-icon"></i>
+            <span class="contact-text">Россия, Мурманская обл., г. Оленегорск, ул. Высокая, д. 5</span>
+          </div>
+          
+          <div class="work-hours">
+            <h3 class="hours-title">Часы работы:</h3>
+            <p class="hours-text">Пн-Пт: 9:00 - 18:00</p>
+            <p class="hours-text">Сб-Вс: выходной</p>
+          </div>
+        </div>
+        
+        <!-- Правая часть - Яндекс.Карта -->
+        <div class="contacts-map" id="yandexMap"></div>
+      </div>
+    </section>
+
+    <script src="./script.js"></script>
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=ваш_api_ключ&lang=ru_RU" type="text/javascript"></script>
+</body>
+</html>
