@@ -761,7 +761,7 @@ section + section {
 .hours-title {
   text-align: center;
   font-size: 1.8rem;
-  margin: 30px 0; 
+  margin: 30px 0;
   color: #333;
 }
 
@@ -774,7 +774,7 @@ section + section {
 .contacts-map {
   flex: 1;
   min-width: 300px;
-  height: 400px;
+  min-height: 400px;
   background: #eee;
 }
 
