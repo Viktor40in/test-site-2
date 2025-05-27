@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Добавление метки
-    const myPlacemark = new ymaps.Placemark([68.137380, 33.254186], {
+    const myPlacemark = new ymaps.Placemark([68.137476, 33.254727], {
       hintContent: 'Наш офис',
       balloonContent: 'Россия, Мурманская обл., г. Оленегорск, ул. Высокая, д. 5'
     }, {
