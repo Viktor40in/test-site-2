@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./styles/partners.css">
     <link rel="icon" href="./icons/favicon.ico" type="image/x-icon">
     <title>Союз</title>
 </head>
 <body>
+
+    <!-- Заголовок  -->
     <header class="main-header">
         <div class="header-container">
           <a href="#" class="logo">
@@ -28,6 +31,7 @@
         </div>
     </header>
 
+    <!-- Секция Приветствие -->
     <section class="welcome-info cat" id="section1">
         <div class="hero-content">
             <h1 class="hero-title">Общество с ограниченной ответственностью СОЮЗ</h1>
@@ -40,77 +44,52 @@
         </div>
     </section>
 
-    <!-- <section id="section2" class="info-section features" >
-        <div class="container">
-            <img src="./roll-image/firebreak_tank.jpg" alt="Изображение" class="blended-image">
-        </div>
-        <div class="services-container">
-          <h2 class="services-title">Наши услуги</h2>
-          <div class="services-rotator">
-            <div class="service-item active">
-              <p>Cистемы технических средств охраны</p>
-              <p>Cистемы автоматической пожарной сигнализации</p>
-              <p>Системы видеонаблюдения</p>
-              <p>Перезарядка огнетушителей</p>
+    <!-- Секция предоставляемых услуг -->
+    <section class="services-section">
+      <div class="container">
+          <h2 class="section-title">Предоставляем широкий спектр услуг</h2>
+          <h3 class="subtitle" id="allServicesBtn">Смотреть все</h3>
+      
+          <div class="services-slider">
+            <button class="slider-arrow left-arrow">&lt;</button>
+          
+            <div class="services-wrapper">
+            <!-- Мини-окна услуг будут генерироваться JS -->
+                <div class="slider-dots">
+                  <!-- Индикаторы будут добавляться через JavaScript -->
+                </div>
             </div>
-            <div class="service-item">
-              <p>Монтаж устройств электрических и иных сетей управления системами
-                жизнеобеспечения, в т.ч. газоочистка, вентиляция и
-                дымоудаление</p>
-              <p>Слаботочные сети: телефонизация, локальные сети ЭВМ</p>
-              <p>Системы контроля доступа</p>
-              <p>Услуги электротехнической лаборатории</p>
-            </div>
+          
+            <button class="slider-arrow right-arrow">&gt;</button>
           </div>
-        </div>
-    </section> -->
-
-  <section class="services-section">
-    <div class="container">
-      <h2 class="section-title">Предоставляем широкий спектр услуг</h2>
-      <h3 class="subtitle" id="allServicesBtn">Смотреть все</h3>
-    
-      <div class="services-slider">
-        <button class="slider-arrow left-arrow">&lt;</button>
-      
-        <div class="services-wrapper">
-        <!-- Мини-окна услуг будут генерироваться JS -->
-            <div class="slider-dots">
-              <!-- Индикаторы будут добавляться через JavaScript -->
-            </div>
-        </div>
-      
-        <button class="slider-arrow right-arrow">&gt;</button>
       </div>
-  </div>
-  
-  <!-- Модальное окно "Все услуги" -->
-  <div class="modal" id="servicesModal">
-    <div class="modal-content">
-      <span class="close-btn">&times;</span>
-      
-      <div class="modal-container">
-        <!-- Левая часть - меню фильтров -->
-        <div class="filter-menu">
-          <ul class="filter-list">
-            <li class="filter-item active" data-filter="all">Все услуги</li>
-            <li class="filter-item" data-filter="design">Проектирование</li>
-            <li class="filter-item" data-filter="development">Монтаж</li>
-            <li class="filter-item" data-filter="marketing">Обслуживание</li>
-            <li class="filter-item" data-filter="support">Дополнительные услуги</li>
-          </ul>
-        </div>
-        
-        <!-- Правая часть - список всех услуг -->
-        <div class="services-list">
-          <!-- Услуги будут генерироваться JS -->
-        </div>
-      </div>
-    </div>
-  </div>
-
-</section>
     
+    <!-- Модальное окно "Все услуги" -->
+      <div class="modal" id="servicesModal">
+          <div class="modal-content">
+              <span class="close-btn">&times;</span>
+              <div class="modal-container">
+                  <!-- Левая часть - меню фильтров -->
+                  <div class="filter-menu">
+                      <ul class="filter-list">
+                          <li class="filter-item all_services" data-filter="all">Все услуги</li>
+                          <li class="filter-item design_services">Проектирование</li>
+                          <li class="filter-item montage_services">Монтаж</li>
+                          <li class="filter-item service_services">Обслуживание</li>
+                          <li class="filter-item other_services">Дополнительные услуги</li>
+                      </ul>
+                  </div>
+                  <!-- Правая часть - список всех услуг -->
+                  <div class="services-list">
+                    <!-- Услуги будут генерироваться JS -->
+                  </div>
+              </div>
+          </div>
+      </div>
+
+    </section>
+
+    <!-- Секция "Свяжитесь с нами" -->
     <section class="contact-section mail" id="section3">
         <div class="contact-container">
             <h2 class="section-title">Свяжитесь с нами</h2>
@@ -125,6 +104,120 @@
             </form>
         </div>
     </section>
+
+    <!-- Секция с партнёрами -->
+    <section class="partners-section">
+        <div class="container">
+            <h2 class="partners-title">Наши партнёры</h2>
+            <div class="partners-grid">
+                <!-- Карточка 1 -->
+                <div class="partner-card">
+                    <div class="partner-image">
+                        <img src="./partners-images/severstal.png" alt="Severstal">
+                    </div>
+                    <div class="partner-name">ПАО "Северсталь"</div>
+                </div>
+                
+                <!-- Карточка 2 -->
+                <div class="partner-card">
+                    <div class="partner-image">
+                        <img src="./partners-images/tgk1.jpg" alt="TGK1">
+                    </div>
+                    <div class="partner-name">ПАО "Территориальная генерирующая компания 1"</div>
+                </div>
+                
+                <!-- Карточка 3 -->
+                <div class="partner-card">
+                    <div class="partner-image">
+                        <img src="./partners-images/фсб.jpg" alt="FSB">
+                    </div>
+                    <div class="partner-name">ФСБ России Пограничное управление по Западному Арктическому району</div>
+                </div>
+                
+                <!-- Карточка 4 -->
+                <div class="partner-card">
+                    <div class="partner-image">
+                        <img src="./partners-images/Olegorsk.jpg" alt="Olenegorsk">
+                    </div>
+                    <div class="partner-name">Администрация города Оленегорска</div>
+                </div>
+                
+                <!-- Карточка 5 -->
+                <div class="partner-card">
+                    <div class="partner-image">
+                        <img src="./partners-images/lovozero.jpg" alt="Olenegorsk">
+                    </div>
+                    <div class="partner-name">Администрация Ловозерского района</div>
+                </div>
+                
+                <!-- Карточка 6 -->
+                <div class="partner-card">
+                    <div class="partner-image">
+                        <img src="./partners/partner6.jpg" alt="Название предприятия 6">
+                    </div>
+                    <div class="partner-name">ЗАО "Охранные Системы"</div>
+                </div>
+                
+                <!-- Карточка 7 -->
+                <div class="partner-card">
+                    <div class="partner-image">
+                        <img src="./partners/partner7.jpg" alt="Название предприятия 7">
+                    </div>
+                    <div class="partner-name">ООО "СпецСтройМонтаж"</div>
+                </div>
+                
+                <!-- Карточка 8 -->
+                <div class="partner-card">
+                    <div class="partner-image">
+                        <img src="./partners/partner8.jpg" alt="Название предприятия 8">
+                    </div>
+                    <div class="partner-name">АО "Технический Надзор"</div>
+                </div>
+                
+                <!-- Карточка 9 -->
+                <div class="partner-card">
+                    <div class="partner-image">
+                        <img src="./partners/partner9.jpg" alt="Название предприятия 9">
+                    </div>
+                    <div class="partner-name">ООО "Пожарный Контроль"</div>
+                </div>
+                
+                <!-- Карточка 10 -->
+                <div class="partner-card">
+                    <div class="partner-image">
+                        <img src="./partners/partner10.jpg" alt="Название предприятия 10">
+                    </div>
+                    <div class="partner-name">ЗАО "Безопасность Решений"</div>
+                </div>
+                
+                <!-- Карточка 11 -->
+                <div class="partner-card">
+                    <div class="partner-image">
+                        <img src="./partners/partner11.jpg" alt="Название предприятия 11">
+                    </div>
+                    <div class="partner-name">ООО "ТехноСервис Плюс"</div>
+                </div>
+                
+                <!-- Карточка 12 -->
+                <div class="partner-card">
+                    <div class="partner-image">
+                        <img src="./partners/partner12.jpg" alt="Название предприятия 12">
+                    </div>
+                    <div class="partner-name">АО "Проектные Системы"</div>
+                </div>
+                
+                <!-- Карточка 13 -->
+                <div class="partner-card">
+                    <div class="partner-image">
+                        <img src="./partners/partner13.jpg" alt="Название предприятия 13">
+                    </div>
+                    <div class="partner-name">ООО "МонтажСпецСервис"</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция с документами -->
     <section class="gallery-section" id="section4">
 
     <!-- Лицензия 1 -->
@@ -220,6 +313,7 @@
       </div>
     </section>
 
+    <!-- Секция с контактами и картой -->
     <section class="contacts-section" id="section5">
       <div class="contacts-container">
         <!-- Левая часть - контакты -->
@@ -248,7 +342,7 @@
       </div>
     </section>
 
-    <script src="./script.js"></script>
+    <script type="module" src="./script.js"></script>
     <script src="https://api-maps.yandex.ru/2.1/?apikey=ваш_api_ключ&lang=ru_RU" type="text/javascript"></script>
 </body>
 </html>

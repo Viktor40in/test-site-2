@@ -1,27 +1,9 @@
-//СМЕНА ПЕРЕЧНЯ УСЛУГ
-document.addEventListener('DOMContentLoaded', function() {
-  const services = document.querySelectorAll('.service-item');
-  let current = 0;
-  
-  function rotateServices() {
-    // Скрываем текущий элемент
-    services[current].classList.remove('active');
-    
-    // Переходим к следующему
-    current = (current + 1) % services.length;
-    
-    // Показываем новый элемент
-    services[current].classList.add('active');
-  }
-  
-  // Запускаем ротацию каждые 7 секунд
-  setInterval(rotateServices, 7000);
-  
-  // Инициализация - показываем первый элемент
-  if (services.length > 0) {
-    services[0].classList.add('active');
-  }
-});
+//Импорт списка услуг
+import { servicesData } from "./servicesData.js";
+import { servicesData_design } from "./servicesData.js";
+import { servicesData_montage } from "./servicesData.js";
+import { servicesData_service } from "./servicesData.js";
+import { servicesData_other } from "./servicesData.js";
 
 //ОТПРАВКА ФОРМЫ
 document.getElementById('contactForm').addEventListener('submit', function(e) {
@@ -41,7 +23,7 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
   this.reset();
 });
 
-//СЛАЙДЕР ИЗРБРАЖЕНИЙ ЛИЦЕНЗИИ
+//СЕКЦИЯ ИЗОБРАЖЕНИЙ ЛИЦЕНЗИИ
 document.addEventListener('DOMContentLoaded', function() {
   // Получаем элементы
   const modal = document.getElementById('imageModal');
@@ -113,238 +95,85 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
+//----------------------------------------------СЕКЦИЯ УСЛУГ------------------------------------------------
+//слайдер услуг на главной странице
+const servicesWrapper = document.querySelector('.services-wrapper');
+//Кнопка "Смотреть все"
+const allServicesBtn = document.getElementById('allServicesBtn');
+//генерация карточек для слайдера
+(function generateServiceCards() {
+    servicesWrapper.innerHTML = '';
+    servicesData.slice(0, 24).forEach(service => {
+        const card = document.createElement('div');
+        card.className = 'service-card';
+        card.innerHTML = `
+          <div class="service-image" style="background-image: ${service.image}"></div>
+          <div class="service-info">
+            <h3 class="service-title">${service.title}</h3>
+            <a href="#contact" class="service-btn">Связаться с нами</a>
+          </div>
+        `;
+        servicesWrapper.appendChild(card);
+    });
+})();
+
+
+
+//Модальное окно
+//div со списком услуг во всплывающем окне
+//Фон модального окна
+const modalServices = document.getElementById('servicesModal');
+const servicesList = document.querySelector('.services-list');
+const button_allServices = document.querySelector('all_services');
+const button_designServices = document.querySelector('design_services');
+const button_montageServices = document.querySelector('montage_services');  
+const button_serviceServices = document.querySelector('service_services');
+const button_otherServices = document.querySelector('other_services');
+
+//Генерация списка услуг для модального окна
+function generateServicesList(data) {
+    servicesList.innerHTML = '';
+    data.forEach(service => {
+        const item = document.createElement('div');
+        item.className = 'service-modal-item';
+        item.innerHTML = `
+          <h3 class="service-modal-title">${service.title}</h3>
+          <span class="service-modal-category">${service.category}</span>
+        `;
+        servicesList.appendChild(item);
+    });
+};
+// Открытие модального окна
+allServicesBtn.addEventListener('click', function() {
+    modalServices.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+    generateServicesList(servicesData);
+});
+// Закрытие модального окна
+closeBtn.addEventListener('click', function() {
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+});
+// Закрытие при клике вне окна
+window.addEventListener('click', function(e) {
+    // Проверяем, является ли модальное окно целью или его родителем
+    if (e.target === modalServices || modalServices.contains(e.target)) {
+        // Если клик именно по фону модалки (не по контенту)
+        if (e.target === modalServices) {
+            modalServices.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    }
+});
+
 //Всплывающая cекция услуг
 document.addEventListener('DOMContentLoaded', function() {
-  // Данные услуг
-  const servicesData = [
-  {
-    id: 1,
-    title: "Проектирование противопожарных систем",
-    category: "Проектирование",
-    image: "url('./icons/homework.png')"
-  },
-  {
-    id: 2,
-    title: "Проектирование охранно-пожарной сигнализации",
-    category: "Проектирование",
-    image: "url('./icons/wrench.png')"
-  },
-  {
-    id: 3,
-    title: "Проектирование видеонаблюдения",
-    category: "Проектирование",
-    image: "url('./icons/gear.png')"
-  },
-  {
-    id: 4,
-    title: "Проектирование СКУД",
-    category: "Проектирование",
-    image: "url('./icons/homework.png')"
-  },
-  {
-    id: 5,
-    title: "Проектирование ВОЛС (телефонных, радио и телевидения и т.д), СКС (телефонизация, локальные сети)",
-    category: "Проектирование",
-    image: "url('./icons/wrench.png')"
-  },
-  {
-    id: 6,
-    title: "Монтаж системы пожарной сигнализации",
-    category: "Монтаж",
-    image: "url('./icons/gear.png')"
-  },
-  {
-    id: 7,
-    title: "Монтаж системы оповещения о пожаре и управления эвакуацией (СОУЭ)",
-    category: "Монтаж",
-    image: "url('./icons/homework.png')"
-  },
-  {
-    id: 8,
-    title: "Монтаж систем пожаротушения",
-    category: "Монтаж",
-    image: "url('./icons/wrench.png')"
-  },
-  {
-    id: 9,
-    title: "Монтаж охранно-пожарной сигнализации (ОПС)",
-    category: "Монтаж",
-    image: "url('./icons/gear.png')"
-  },
-  {
-    id: 10,
-    title: "Монтаж систем видеонаблюдения",
-    category: "Монтаж",
-    image: "url('./icons/homework.png')"
-  },
-  {
-    id: 11,
-    title: "Монтаж периметральной сигнализации",
-    category: "Монтаж",
-    image: "url('./icons/wrench.png')"
-  },
-  {
-    id: 12,
-    title: "Монтаж системы СКУД",
-    category: "Монтаж",
-    image: "url('./icons/gear.png')"
-  },
-  {
-    id: 13,
-    title: "Монтаж ВОЛС (телефонных, радио и телевидения и т.д), СКС (телефонизация, локальные сети)",
-    category: "Монтаж",
-    image: "url('./icons/homework.png')"
-  },
-  {
-    id: 14,
-    title: "Обслуживание пожарной сигнализации и систем оповещения о пожаре (ПАС и СОУЭ)",
-    category: "Обслуживание",
-    image: "url('./icons/wrench.png')"
-  },
-  {
-    id: 15,
-    title: "Техническое обслуживание автоматических установок пожаротушения (АУПТ)",
-    category: "Обслуживание",
-    image: "url('./icons/gear.png')"
-  },
-  {
-    id: 16,
-    title: "Техническое обслуживание охранно-пожарной сигнализации (ОПС)",
-    category: "Обслуживание",
-    image: "url('./icons/homework.png')"
-  },
-  {
-    id: 17,
-    title: "Техническое обслуживание систем видеонаблюдения, СКУД",
-    category: "Обслуживание",
-    image: "url('./icons/wrench.png')"
-  },
-  {
-    id: 18,
-    title: "Огнезащитная обработка",
-    category: "Дополнительные услуги",
-    image: "url('./icons/gear.png')"
-  },
-  {
-    id: 19,
-    title: "ТО и ремонт, перезарядка, списывание (выбраковка), гидравлические испытания огнетушителей",
-    category: "Дополнительные услуги",
-    image: "url('./icons/homework.png')"
-  },
-  {
-    id: 20,
-    title: "Проведение испытаний противопожарного водопровода и перемотка пожарных рукавов",
-    category: "Дополнительные услуги",
-    image: "url('./icons/wrench.png')"
-  },
-  {
-    id: 21,
-    title: "Испытание наружных лестниц и ограждений кровли",
-    category: "Дополнительные услуги",
-    image: "url('./icons/gear.png')"
-  },
-  {
-    id: 22,
-    title: "Услуги электролаборатории и проверка средств индивидуальной защиты",
-    category: "Дополнительные услуги",
-    image: "url('./icons/homework.png')"
-  },
-  {
-    id: 23,
-    title: "Поставка полиграфической продукции и оборудования в области пожарной безопасности (знаки эвакуации, пожарные шкафы, огнетушители и комплектующие)",
-    category: "Дополнительные услуги",
-    image: "url('./icons/wrench.png')"
-  },
-  {
-    id: 24,
-    title: "Изготовление планов эвакуации по ГОСТ 34428-2018",
-    category: "Дополнительные услуги",
-    image: "url('./icons/gear.png')"
-  },
-  {
-    id: 25,
-    title: "Установка сигнализаторов и газоанализаторов (датчики сигнализаторов довзрывоопасных концентраций на открытых установках)",
-    category: "Дополнительные услуги",
-    image: "url('./icons/homework.png')"
-  }
-];
-
   // Элементы DOM
-  const servicesWrapper = document.querySelector('.services-wrapper');
-  const servicesList = document.querySelector('.services-list');
-  const allServicesBtn = document.getElementById('allServicesBtn');
-  const modal = document.getElementById('servicesModal');
-  const closeBtn = document.querySelector('.close-btn');
   const filterItems = document.querySelectorAll('.filter-item');
   const leftArrow = document.querySelector('.left-arrow');
   const rightArrow = document.querySelector('.right-arrow');
 
   // Генерация карточек услуг для слайдера
-  function generateServiceCards() {
-    servicesWrapper.innerHTML = '';
-    servicesData.slice(0, 24).forEach(service => {
-      const card = document.createElement('div');
-      card.className = 'service-card';
-      card.innerHTML = `
-        <div class="service-image" style="background-image: ${service.image}"></div>
-        <div class="service-info">
-          <h3 class="service-title">${service.title}</h3>
-          <a href="#contact" class="service-btn">Связаться с нами</a>
-        </div>
-      `;
-      servicesWrapper.appendChild(card);
-    });
-  }
-
-  // Генерация списка услуг для модального окна
-  function generateServicesList(filter = 'all') {
-    servicesList.innerHTML = '';
-    const filteredServices = filter === 'all' 
-      ? servicesData 
-      : servicesData.filter(service => service.category === filter);
-    
-    filteredServices.forEach(service => {
-      const item = document.createElement('div');
-      item.className = 'service-modal-item';
-      item.innerHTML = `
-        <h3 class="service-modal-title">${service.title}</h3>
-        <span class="service-modal-category">${service.category}</span>
-      `;
-      servicesList.appendChild(item);
-    });
-  }
-
-  // Открытие модального окна
-  allServicesBtn.addEventListener('click', function() {
-    modal.style.display = 'block';
-    generateServicesList();
-    document.body.style.overflow = 'hidden';
-  });
-
-  // Закрытие модального окна
-  closeBtn.addEventListener('click', function() {
-    modal.style.display = 'none';
-    document.body.style.overflow = 'auto';
-  });
-
-  // Закрытие при клике вне окна
-  window.addEventListener('click', function(e) {
-    if (e.target === modal) {
-      modal.style.display = 'none';
-      document.body.style.overflow = 'auto';
-    }
-  });
-
-  // Фильтрация услуг
-  filterItems.forEach(item => {
-    item.addEventListener('click', function() {
-      filterItems.forEach(i => i.classList.remove('active'));
-      this.classList.add('active');
-      const filter = this.getAttribute('data-filter');
-      generateServicesList(filter);
-    });
-  });
-
   // Навигация слайдера
   leftArrow.addEventListener('click', function() {
     servicesWrapper.scrollBy({
@@ -360,9 +189,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // Инициализация
-  generateServiceCards();
-  generateServicesList();
+
 });
 
 
