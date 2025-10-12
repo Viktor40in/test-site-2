@@ -737,6 +737,10 @@ section + section {
   gap: 30px;
 }
 
+.award {
+  margin-bottom: 5px;
+}
+
 /* Левый текстовый блок */
 .text-block {
   flex: 1;
