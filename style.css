@@ -456,8 +456,8 @@ section + section {
 .modal-content {
   background: white;
   margin: 5% auto;
-  width: 80%;
-  max-width: 1000px;
+  width: 40%;
+  max-width: 800px;
   border-radius: 10px;
   overflow: hidden;
   position: relative;
