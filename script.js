@@ -23,6 +23,8 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
   this.reset();
 });
 
+
+
 //СЕКЦИЯ ИЗОБРАЖЕНИЙ ЛИЦЕНЗИИ
 document.addEventListener('DOMContentLoaded', function() {
   // Получаем элементы
@@ -40,13 +42,15 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   
   // Закрытие модального окна
-  closeBtn.addEventListener('click', function() {
-    modal.style.display = 'none';
+  closeBtn.addEventListener('click', function(e) {
+    if(e.target === closeBtn) {
+      modal.style.display = 'none';
+    }  
   });
   
   // Закрытие при клике вне изображения
   modal.addEventListener('click', function(e) {
-    if (e.target === modal) {
+    if (e.target === modal || e.target === closeBtn) {
       modal.style.display = 'none';
     }
   });
@@ -171,39 +175,21 @@ function generateServicesList(data) {
 };
 // Открытие модального окна
 allServicesBtn.addEventListener('click', function() {
-    modalServices.style.display = 'block';
+    modalServices.style.display = 'flex';
     document.body.style.overflow = 'hidden';
     generateServicesList(servicesData);
+    const closeBtn = document.querySelector('.close-btn');
     modalServices.addEventListener('click', function(e) {
     // Проверяем, является ли модальное окно целью или его родителем
         if (e.target === modalServices || modalServices.contains(e.target)) {
-            console.log("its modal")
             // Если клик именно по фону модалки (не по контенту)
-            if (e.target === modalServices) {
+            if (e.target === modalServices || e.target === closeBtn) {
                 modalServices.style.display = 'none';
                 document.body.style.overflow = 'auto';
             }
         }
     });
-});
-
-// Закрытие модального окна
-closeBtn.addEventListener('click', function() {
-    modal.style.display = 'none';
-    document.body.style.overflow = 'auto';
-});
-
-// Закрытие при клике вне окна
-window.addEventListener('click', function(e) {
-    // Проверяем, является ли модальное окно целью или его родителем
-    if (e.target === modalServices || modalServices.contains(e.target)) {
-        console.log("its modal")
-        // Если клик именно по фону модалки (не по контенту)
-        if (e.target === modalServices) {
-            modalServices.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-    }
+      // Закрытие модального окна
 });
 
 //Секция услуг
