@@ -478,7 +478,8 @@ section + section {
 
 .modal-container {
   display: flex;
-  min-height: 500px;
+  min-height: 800px;
+  width: 1200px;
 }
 
 /* Левая часть - фильтры */
@@ -519,6 +520,7 @@ section + section {
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 20px;
   max-height: 600px;
+  width: 1200;
   overflow-y: auto;
 }
 

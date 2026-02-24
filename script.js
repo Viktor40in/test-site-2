@@ -146,8 +146,7 @@ const allServicesBtn = document.getElementById('allServicesBtn');
 
 
 
-//Модальное окно
-//div со списком услуг во всплывающем окне
+//Раскрывающееся модальное окно списка услуг
 //Фон модального окна
 const modalServices = document.getElementById('servicesModal');
 const servicesList = document.querySelector('.services-list');
@@ -175,16 +174,30 @@ allServicesBtn.addEventListener('click', function() {
     modalServices.style.display = 'block';
     document.body.style.overflow = 'hidden';
     generateServicesList(servicesData);
+    modalServices.addEventListener('click', function(e) {
+    // Проверяем, является ли модальное окно целью или его родителем
+        if (e.target === modalServices || modalServices.contains(e.target)) {
+            console.log("its modal")
+            // Если клик именно по фону модалки (не по контенту)
+            if (e.target === modalServices) {
+                modalServices.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+    });
 });
+
 // Закрытие модального окна
 closeBtn.addEventListener('click', function() {
     modal.style.display = 'none';
     document.body.style.overflow = 'auto';
 });
+
 // Закрытие при клике вне окна
 window.addEventListener('click', function(e) {
     // Проверяем, является ли модальное окно целью или его родителем
     if (e.target === modalServices || modalServices.contains(e.target)) {
+        console.log("its modal")
         // Если клик именно по фону модалки (не по контенту)
         if (e.target === modalServices) {
             modalServices.style.display = 'none';
