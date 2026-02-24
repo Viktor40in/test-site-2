@@ -96,10 +96,37 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 //----------------------------------------------СЕКЦИЯ УСЛУГ------------------------------------------------
-//слайдер услуг на главной странице
+
+//слайдер услуг
 const servicesWrapper = document.querySelector('.services-wrapper');
+
+
+//Стрелки и их функции
+const leftArrow = document.querySelector('.left-arrow');
+const rightArrow = document.querySelector('.right-arrow');
+
+leftArrow.addEventListener('click', function() {
+    console.log("left")
+    servicesWrapper.scrollBy({
+        left: -300,
+        behavior: 'smooth'
+    });
+});
+
+rightArrow.addEventListener('click', function() {
+    console.log("right")
+    servicesWrapper.scrollBy({
+        left: 300,
+        behavior: 'smooth'
+    });
+});
+
+
+
+
 //Кнопка "Смотреть все"
 const allServicesBtn = document.getElementById('allServicesBtn');
+
 //генерация карточек для слайдера
 (function generateServiceCards() {
     servicesWrapper.innerHTML = '';
@@ -166,34 +193,21 @@ window.addEventListener('click', function(e) {
     }
 });
 
-//Всплывающая cекция услуг
+//Секция услуг
 document.addEventListener('DOMContentLoaded', function() {
   // Элементы DOM
   const filterItems = document.querySelectorAll('.filter-item');
-  const leftArrow = document.querySelector('.left-arrow');
-  const rightArrow = document.querySelector('.right-arrow');
+  
+
 
   // Генерация карточек услуг для слайдера
   // Навигация слайдера
-  leftArrow.addEventListener('click', function() {
-    servicesWrapper.scrollBy({
-      left: -300,
-      behavior: 'smooth'
-    });
-  });
-
-  rightArrow.addEventListener('click', function() {
-    servicesWrapper.scrollBy({
-      left: 300,
-      behavior: 'smooth'
-    });
-  });
-
 
 });
 
 
 //Слайдер
+/*
 // Добавляем новые переменные
 const sliderDots = document.querySelector('.slider-dots');
 let currentPosition = 0;
@@ -247,6 +261,7 @@ rightArrow.addEventListener('click', function() {
     goToSlide(currentPosition + 1);
   }
 });
+*/
 
 // Обработка скролла
 servicesWrapper.addEventListener('scroll', function() {

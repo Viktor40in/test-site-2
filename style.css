@@ -221,34 +221,33 @@ section + section {
 }
 
 .sub{
-    margin-bottom: 0;
-    padding-left: 10px;
+    margin-bottom: 2rem;
     font-size: 1.4rem;
     line-height: 1.6;
 }
 
-.experience::before {
-  content: url(/icons/clock.png);
-  width: 24px;
-  height: 24px;
+.fire::before {
+  content: url(/icons/fire.png);
+  width: 32px;
+  height: 32px;
   background-size: contain;
   margin-right: 10px;
   vertical-align: middle;
 }
 
-.varranty::before {
-  content: url(/icons/garanty2.png);
-  width: 24px;
-  height: 24px;
+.electro::before {
+  content: url(/icons/electro.png);
+  width: 32px;
+  height: 32px;
   background-size: contain;
   margin-right: 10px;
   vertical-align: middle;
 }
 
-.responsibility::before {
-  content: url(/icons/thumbs\ up.png);
-  width: 24px;
-  height: 24px;
+.lab::before {
+  content: url(/icons/lab.png);
+  width: 32px;
+  height: 32px;
   background-size: contain;
   margin-right: 10px;
   vertical-align: middle;
