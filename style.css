@@ -513,7 +513,8 @@ section + section {
 }
 
 .filter-item:hover {
-  background: #e0e0e0;
+  background: red;
+  color: white;
 }
 
 .filter-item.active {
@@ -549,10 +550,11 @@ section + section {
 .service-modal-category {
   display: inline-block;
   padding: 3px 8px;
-  background: #e0e0e0;
+  background: red;
   border-radius: 3px;
   font-size: 0.8rem;
   margin-bottom: 10px;
+  color: white;
 }
 
 .service-modal-description {

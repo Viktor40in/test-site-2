@@ -193,6 +193,11 @@ allServicesBtn.addEventListener('click', function() {
     });
 });
 
+//Реализация фильтров
+button_allServices.addEventListener('click', function(){
+  generateServicesList(servicesData);
+})
+
 button_designServices.addEventListener('click', function(){
   generateServicesList(servicesData.filter(function(item){
     if(item.category === "Проектирование"){
