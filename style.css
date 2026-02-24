@@ -323,6 +323,14 @@ section + section {
   padding: 0 20px;
 }
 
+
+
+.container_services {
+  max-width: 90%;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
 .section-title {
   text-align: center;
   font-size: 2.5rem;
@@ -715,9 +723,15 @@ section + section {
     font-size: 1.5rem;
   }
 }
-/* ---------------------------------CONTACT-US_SECTION-------------------------------- */
+/* ---------------------------------END CONTACT-US_SECTION-------------------------------- */
 
-
+/* Секция партнёры */
+.container_partners {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+/* Секция партнёры */
 
 /* ---------------------------------LICENSE_SECTION-------------------------------- */
 /* Основные стили секции */
@@ -789,7 +803,7 @@ section + section {
 
 .thumbnail {
   width: 150px;
-  height: 150px;
+  height: auto;
   object-fit: cover;
   cursor: pointer;
   border-radius: 5px;

@@ -148,17 +148,18 @@ const allServicesBtn = document.getElementById('allServicesBtn');
     });
 })();
 
-
-
 //Раскрывающееся модальное окно списка услуг
-//Фон модального окна
+//Модальное окно
 const modalServices = document.getElementById('servicesModal');
+//Область отображения карточек-услуг
 const servicesList = document.querySelector('.services-list');
-const button_allServices = document.querySelector('all_services');
-const button_designServices = document.querySelector('design_services');
-const button_montageServices = document.querySelector('montage_services');  
-const button_serviceServices = document.querySelector('service_services');
-const button_otherServices = document.querySelector('other_services');
+
+//Фильтры
+const button_allServices = document.querySelector('.all_services');
+const button_designServices = document.querySelector('.design_services');
+const button_montageServices = document.querySelector('.montage_services');  
+const button_serviceServices = document.querySelector('.service_services');
+const button_otherServices = document.querySelector('.other_services');
 
 //Генерация списка услуг для модального окна
 function generateServicesList(data) {
@@ -173,6 +174,7 @@ function generateServicesList(data) {
         servicesList.appendChild(item);
     });
 };
+
 // Открытие модального окна
 allServicesBtn.addEventListener('click', function() {
     modalServices.style.display = 'flex';
@@ -184,94 +186,48 @@ allServicesBtn.addEventListener('click', function() {
         if (e.target === modalServices || modalServices.contains(e.target)) {
             // Если клик именно по фону модалки (не по контенту)
             if (e.target === modalServices || e.target === closeBtn) {
-                modalServices.style.display = 'none';
+                modalServices.style.display = 'none';  
                 document.body.style.overflow = 'auto';
             }
         }
     });
-      // Закрытие модального окна
 });
+
+button_designServices.addEventListener('click', function(){
+  generateServicesList(servicesData.filter(function(item){
+    if(item.category === "Проектирование"){
+      return item;
+    }
+  }))
+})
+
+button_montageServices.addEventListener('click', function(){
+  generateServicesList(servicesData.filter(function(item){
+    if(item.category === "Монтаж"){
+      return item;
+    }
+  }))
+})
+
+button_serviceServices.addEventListener('click', function(){
+  generateServicesList(servicesData.filter(function(item){
+    if(item.category === "Обслуживание"){
+      return item;
+    }
+  }))
+})
+
+button_otherServices.addEventListener('click', function(){
+  generateServicesList(servicesData.filter(function(item){
+    if(item.category === "Дополнительные услуги"){
+      return item;
+    }
+  }))
+})
 
 //Секция услуг
 document.addEventListener('DOMContentLoaded', function() {
   // Элементы DOM
   const filterItems = document.querySelectorAll('.filter-item');
-  
-
-
-  // Генерация карточек услуг для слайдера
-  // Навигация слайдера
 
 });
-
-
-//Слайдер
-/*
-// Добавляем новые переменные
-const sliderDots = document.querySelector('.slider-dots');
-let currentPosition = 0;
-const cardsPerView = Math.floor(servicesWrapper.offsetWidth / 330) || 1; // Рассчитываем сколько карточек видно
-
-// Функция создания индикаторов
-function createDots() {
-  sliderDots.innerHTML = '';
-  const dotCount = Math.ceil(servicesData.length / cardsPerView);
-  
-  for (let i = 0; i < dotCount; i++) {
-    const dot = document.createElement('div');
-    dot.className = 'slider-dot';
-    if (i === 0) dot.classList.add('active');
-    dot.addEventListener('click', () => {
-      goToSlide(i);
-    });
-    sliderDots.appendChild(dot);
-  }
-}
-
-// Функция перехода к конкретному слайду
-function goToSlide(index) {
-  const cardWidth = document.querySelector('.service-card').offsetWidth + 30; // 30px gap
-  servicesWrapper.scrollTo({
-    left: index * cardsPerView * cardWidth,
-    behavior: 'smooth'
-  });
-  currentPosition = index;
-  updateDots();
-}
-
-// Обновление состояния индикаторов
-function updateDots() {
-  const dots = document.querySelectorAll('.slider-dot');
-  dots.forEach((dot, index) => {
-    dot.classList.toggle('active', index === currentPosition);
-  });
-}
-
-// Обновляем навигацию слайдера
-leftArrow.addEventListener('click', function() {
-  if (currentPosition > 0) {
-    goToSlide(currentPosition - 1);
-  }
-});
-
-rightArrow.addEventListener('click', function() {
-  const dotCount = document.querySelectorAll('.slider-dot').length;
-  if (currentPosition < dotCount - 1) {
-    goToSlide(currentPosition + 1);
-  }
-});
-*/
-
-// Обработка скролла
-servicesWrapper.addEventListener('scroll', function() {
-  const cardWidth = document.querySelector('.service-card').offsetWidth + 30;
-  const newPosition = Math.round(this.scrollLeft / (cardWidth * cardsPerView));
-  if (newPosition !== currentPosition) {
-    currentPosition = newPosition;
-    updateDots();
-  }
-});
-
-// Вызываем создание индикаторов после генерации карточек
-generateServiceCards();
-createDots();
