@@ -1,9 +1,5 @@
 //Импорт списка услуг
-import { servicesData } from "./servicesData.js";
-import { servicesData_design } from "./servicesData.js";
-import { servicesData_montage } from "./servicesData.js";
-import { servicesData_service } from "./servicesData.js";
-import { servicesData_other } from "./servicesData.js";
+import { servicesData, servicesData_full } from "./servicesData.js";
 
 //ОТПРАВКА ФОРМЫ
 document.getElementById('contactForm').addEventListener('submit', function(e) {
@@ -42,10 +38,8 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   
   // Закрытие модального окна
-  closeBtn.addEventListener('click', function(e) {
-    if(e.target === closeBtn) {
+  closeBtn.addEventListener('click', function() { 
       modal.style.display = 'none';
-    }  
   });
   
   // Закрытие при клике вне изображения
@@ -64,46 +58,12 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-//ИНТЕРАКТИВНАЯ КАРТА
-document.addEventListener('DOMContentLoaded', function() {
-  // Инициализация карты
-  ymaps.ready(init);
-  
-  function init() {
-    // Создание карты
-    const myMap = new ymaps.Map("yandexMap", {
-      center: [68.137380, 33.254186], // Координаты вашей организации
-      zoom: 17
-    });
-    
-    // Добавление метки
-    const myPlacemark = new ymaps.Placemark([68.137476, 33.254727], {
-      hintContent: 'Наш офис',
-      balloonContent: 'Россия, Мурманская обл., г. Оленегорск, ул. Высокая, д. 5'
-    }, {
-      iconLayout: 'default#image',
-      iconImageHref: 'https://cdn-icons-png.flaticon.com/512/684/684908.png',
-      iconImageSize: [40, 40],
-      iconImageOffset: [-20, -40]
-    });
-    
-    myMap.geoObjects.add(myPlacemark);
-    
-    // Адаптация под мобильные устройства
-    myMap.behaviors.disable('scrollZoom');
-    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-      myMap.behaviors.disable('drag');
-    }
-  }
-});
 
 
 
-//----------------------------------------------СЕКЦИЯ УСЛУГ------------------------------------------------
-
+//----------------------------------------------СЕКЦИЯ УСЛУГ------------------------------------------------//
 //слайдер услуг
 const servicesWrapper = document.querySelector('.services-wrapper');
-
 
 //Стрелки и их функции
 const leftArrow = document.querySelector('.left-arrow');
@@ -124,9 +84,6 @@ rightArrow.addEventListener('click', function() {
         behavior: 'smooth'
     });
 });
-
-
-
 
 //Кнопка "Смотреть все"
 const allServicesBtn = document.getElementById('allServicesBtn');
@@ -179,7 +136,7 @@ function generateServicesList(data) {
 allServicesBtn.addEventListener('click', function() {
     modalServices.style.display = 'flex';
     document.body.style.overflow = 'hidden';
-    generateServicesList(servicesData);
+    generateServicesList(servicesData_full);
     const closeBtn = document.querySelector('.close-btn');
     modalServices.addEventListener('click', function(e) {
     // Проверяем, является ли модальное окно целью или его родителем
@@ -229,10 +186,40 @@ button_otherServices.addEventListener('click', function(){
     }
   }))
 })
+//----------------------------------------------СЕКЦИЯ УСЛУГ------------------------------------------------//
 
-//Секция услуг
+
+//ИНТЕРАКТИВНАЯ КАРТА
 document.addEventListener('DOMContentLoaded', function() {
-  // Элементы DOM
-  const filterItems = document.querySelectorAll('.filter-item');
-
+  // Инициализация карты
+  ymaps.ready(init);
+  
+  function init() {
+    // Создание карты
+    const myMap = new ymaps.Map("yandexMap", {
+      center: [68.137380, 33.254186], // Координаты вашей организации
+      zoom: 17
+    });
+    
+    // Добавление метки
+    const myPlacemark = new ymaps.Placemark([68.136715, 33.255995], {
+      hintContent: 'Наш офис',
+      balloonContent: 'Россия, Мурманская обл., г. Оленегорск, ул. Высокая, д. 5'
+    }, {
+      iconLayout: 'default#image',
+      iconImageHref: 'https://cdn-icons-png.flaticon.com/512/684/684908.png',
+      iconImageSize: [40, 40],
+      iconImageOffset: [-20, -40]
+    });
+    
+    myMap.geoObjects.add(myPlacemark);
+    
+    // Адаптация под мобильные устройства
+    myMap.behaviors.disable('scrollZoom');
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+      myMap.behaviors.disable('drag');
+    }
+  }
 });
+
+
