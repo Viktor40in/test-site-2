@@ -21,12 +21,11 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
 
 
 
-//СЕКЦИЯ ИЗОБРАЖЕНИЙ ЛИЦЕНЗИИ
+//      СЕКЦИЯ ИЗОБРАЖЕНИЙ ЛИЦЕНЗИИ
 document.addEventListener('DOMContentLoaded', function() {
   // Получаем элементы
   const modal = document.getElementById('imageModal');
   const modalImg = document.getElementById('modalImage');
-  const closeBtn = document.querySelector('.close-btn');
   const thumbnails = document.querySelectorAll('.thumbnail');
   
   // Открытие модального окна
@@ -37,48 +36,36 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
   
-  // Закрытие модального окна
-  closeBtn.addEventListener('click', function() { 
-      modal.style.display = 'none';
-  });
-  
   // Закрытие при клике вне изображения
   modal.addEventListener('click', function(e) {
-    if (e.target === modal || e.target === closeBtn) {
-      modal.style.display = 'none';
-    }
+      if (e.target === modal || e.target.closest('.close-btn')) {
+          modal.style.display = 'none';
+      }
   });
   
   // Закрытие по ESC
   document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && modal.style.display === 'flex') {
-      modal.style.display = 'none';
-    }
+      if (e.key === 'Escape' && modal.style.display === 'flex') {
+          modal.style.display = 'none';
+      }
   });
 });
 
 
 
-
-
-//----------------------------------------------СЕКЦИЯ УСЛУГ------------------------------------------------//
+//      СЕКЦИЯ УСЛУГ
 //слайдер услуг
 const servicesWrapper = document.querySelector('.services-wrapper');
-
 //Стрелки и их функции
 const leftArrow = document.querySelector('.left-arrow');
 const rightArrow = document.querySelector('.right-arrow');
-
 leftArrow.addEventListener('click', function() {
-    console.log("left")
     servicesWrapper.scrollBy({
         left: -300,
         behavior: 'smooth'
     });
 });
-
 rightArrow.addEventListener('click', function() {
-    console.log("right")
     servicesWrapper.scrollBy({
         left: 300,
         behavior: 'smooth'
@@ -88,7 +75,7 @@ rightArrow.addEventListener('click', function() {
 //Кнопка "Смотреть все"
 const allServicesBtn = document.getElementById('allServicesBtn');
 
-//генерация карточек для слайдера
+//Генерация карточек для слайдера
 (function generateServiceCards() {
     servicesWrapper.innerHTML = '';
     servicesData.slice(0, 24).forEach(service => {
@@ -97,13 +84,53 @@ const allServicesBtn = document.getElementById('allServicesBtn');
         card.innerHTML = `
           <div class="service-image" style="background-image: ${service.image}"></div>
           <div class="service-info">
-            <h3 class="service-title">${service.title}</h3>
+            <h3 class="service-title ${service.class}">${service.title}</h3>
             <a href="#contact" class="service-btn">Связаться с нами</a>
           </div>
         `;
         servicesWrapper.appendChild(card);
     });
 })();
+
+//Отрытие фильрованного списка услуг при нажатии на заголовок карточки
+//Набор DOM-элементов с параметром-классом
+const designCards = document.querySelectorAll('.design');
+const montageCards = document.querySelectorAll('.montage');
+const serviceCards = document.querySelectorAll('.service');
+const additionalCards = document.querySelectorAll('.additional');
+//Массив с параметрами сотрировки карточек при открытии модального окна
+const categories_array = ["Проектирование", "Монтаж", "Обслуживание", "Дополнительные услуги"];
+//Функция для накладываения эвента-нажатия по загаловку карточки
+function eventFilterOnCardTitle(cards, category){
+  cards.forEach(card => {
+      card.addEventListener('click', function(){
+          modalServices.style.display = 'flex';
+          document.body.style.overflow = 'hidden';
+          const filteredData = servicesData_full.filter(function(item){
+              if(item.category === category){
+                  return item;
+              }
+          })
+          generateServicesList(filteredData)
+          const closeBtn = document.querySelector('.close-btn');
+          modalServices.addEventListener('click', function(e) {
+          // Проверяем, является ли модальное окно целью или его родителем
+              if (e.target === modalServices || modalServices.contains(e.target)) {
+                  // Если клик именно по фону модалки (не по контенту)
+                  if (e.target === modalServices || e.target === closeBtn) {
+                      modalServices.style.display = 'none';  
+                      document.body.style.overflow = 'auto';
+                  }
+              }
+        });
+      })
+  })
+}
+//Функция выше для каждого типа услуг-карточек
+eventFilterOnCardTitle(designCards, categories_array[0]);
+eventFilterOnCardTitle(montageCards, categories_array[1]);
+eventFilterOnCardTitle(serviceCards, categories_array[2]);
+eventFilterOnCardTitle(additionalCards, categories_array[3]);
 
 //Раскрывающееся модальное окно списка услуг
 //Модальное окно
@@ -132,7 +159,7 @@ function generateServicesList(data) {
     });
 };
 
-// Открытие модального окна
+//Открытие модального окна
 allServicesBtn.addEventListener('click', function() {
     modalServices.style.display = 'flex';
     document.body.style.overflow = 'hidden';
@@ -152,11 +179,11 @@ allServicesBtn.addEventListener('click', function() {
 
 //Реализация фильтров
 button_allServices.addEventListener('click', function(){
-  generateServicesList(servicesData);
+  generateServicesList(servicesData_full);
 })
 
 button_designServices.addEventListener('click', function(){
-  generateServicesList(servicesData.filter(function(item){
+  generateServicesList(servicesData_full.filter(function(item){
     if(item.category === "Проектирование"){
       return item;
     }
@@ -164,7 +191,7 @@ button_designServices.addEventListener('click', function(){
 })
 
 button_montageServices.addEventListener('click', function(){
-  generateServicesList(servicesData.filter(function(item){
+  generateServicesList(servicesData_full.filter(function(item){
     if(item.category === "Монтаж"){
       return item;
     }
@@ -172,7 +199,7 @@ button_montageServices.addEventListener('click', function(){
 })
 
 button_serviceServices.addEventListener('click', function(){
-  generateServicesList(servicesData.filter(function(item){
+  generateServicesList(servicesData_full.filter(function(item){
     if(item.category === "Обслуживание"){
       return item;
     }
@@ -180,16 +207,15 @@ button_serviceServices.addEventListener('click', function(){
 })
 
 button_otherServices.addEventListener('click', function(){
-  generateServicesList(servicesData.filter(function(item){
+  generateServicesList(servicesData_full.filter(function(item){
     if(item.category === "Дополнительные услуги"){
       return item;
     }
   }))
 })
-//----------------------------------------------СЕКЦИЯ УСЛУГ------------------------------------------------//
 
 
-//ИНТЕРАКТИВНАЯ КАРТА
+//      ИНТЕРАКТИВНАЯ КАРТА
 document.addEventListener('DOMContentLoaded', function() {
   // Инициализация карты
   ymaps.ready(init);

@@ -1,33 +1,38 @@
- //Все услуги
+ //Сокращенные услуги для карточек
  export const servicesData = [
   {
     id: 1,
     title: "Проектирование противопожарных систем, охранно-пожарных систем, видеонаблюдения, СКУД, ВОЛС",
     category: "Проектирование",
+    class: "design",    
     image: "url('./icons/homework.png')"
   },
   {
     id: 2,
     title: "Проектирование видеонаблюдения, СКУД, ВОЛС",
     category: "Проектирование",
+    class: "design",
     image: "url('./icons/wrench.png')"
   },
   {
     id: 3,
     title: "Монтаж системы пожарной сигнализации",
     category: "Монтаж",
+    class: "montage",
     image: "url('./icons/gear.png')"
   },
   {
     id: 4,
     title: "Монтаж системы оповещения о пожаре и управления эвакуацией (СОУЭ)",
     category: "Монтаж",
+    class: "montage",
     image: "url('./icons/homework.png')"
   },
   {
     id: 5,
     title: "Монтаж систем пожаротушения, охранно-пожарной сигнализации (ОПС)",
     category: "Монтаж",
+    class: "montage",
     image: "url('./icons/wrench.png')"
   },
 
@@ -35,89 +40,103 @@
     id: 6,
     title: "Монтаж систем видеонаблюдения, параметральной сигнализации, СКУД",
     category: "Монтаж",
+    class: "montage",
     image: "url('./icons/homework.png')"
   },
   {
     id: 7,
     title: "Монтаж ВОЛС (телефонных, радио и телевидения и т.д), СКС (телефонизация, локальные сети)",
     category: "Монтаж",
+    class: "montage",
     image: "url('./icons/homework.png')"
   },
   {
     id: 8,
     title: "Обслуживание пожарной сигнализации и систем оповещения о пожаре (ПАС и СОУЭ)",
     category: "Обслуживание",
+    class: "service",
     image: "url('./icons/wrench.png')"
   },
   {
     id: 9,
     title: "Техническое обслуживание автоматических установок пожаротушения (АУПТ)",
     category: "Обслуживание",
+    class: "service",
     image: "url('./icons/gear.png')"
   },
   {
     id: 10,
     title: "Техническое обслуживание охранно-пожарной сигнализации (ОПС)",
     category: "Обслуживание",
+    class: "service",
     image: "url('./icons/homework.png')"
   },
   {
     id: 11,
     title: "Техническое обслуживание систем видеонаблюдения, СКУД",
     category: "Обслуживание",
+    class: "service",
     image: "url('./icons/wrench.png')"
   },
   {
     id: 12,
     title: "Огнезащитная обработка",
     category: "Дополнительные услуги",
+    class: "additional",
     image: "url('./icons/gear.png')"
   },
   {
     id: 13,
     title: "ТО и ремонт, перезарядка, списание (выбраковка), гидравлические испытания огнетушителей",
     category: "Дополнительные услуги",
+    class: "additional",
     image: "url('./icons/homework.png')"
   },
   {
     id: 14,
     title: "Проведение испытаний противопожарного водопровода и перемотка пожарных рукавов",
     category: "Дополнительные услуги",
+    class: "additional",
     image: "url('./icons/wrench.png')"
   },
   {
     id: 15,
     title: "Испытание наружных лестниц и ограждений кровли",
     category: "Дополнительные услуги",
+    class: "additional",
     image: "url('./icons/gear.png')"
   },
   {
     id: 16,
     title: "Услуги электролаборатории и проверка средств индивидуальной защиты",
     category: "Дополнительные услуги",
+    class: "additional",
     image: "url('./icons/homework.png')"
   },
   {
     id: 17,
     title: "Поставка полиграфической продукции и оборудования в области пожарной безопасности (знаки эвакуации, пожарные шкафы, огнетушители и комплектующие)",
     category: "Дополнительные услуги",
+    class: "additional",
     image: "url('./icons/wrench.png')"
   },
   {
     id: 18,
     title: "Изготовление планов эвакуации по ГОСТ 34428-2018",
     category: "Дополнительные услуги",
+    class: "additional",
     image: "url('./icons/gear.png')"
   },
   {
     id: 19,
     title: "Установка сигнализаторов и газоанализаторов (датчики сигнализаторов довзрывоопасных концентраций на открытых установках)",
     category: "Дополнительные услуги",
+    class: "additional",
     image: "url('./icons/homework.png')"
   }
 ];
 
- //Все услуги
+ //Все услуги 
  export const servicesData_full = [
   {
     id: 1,
