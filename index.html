@@ -39,6 +39,7 @@
             <h1 class="hero-title">Группа компаний <strong>СОЮЗ</strong></h1>
             <p class="hero-subtitle">Ваше спокойствие - наша работа уже <strong style="color: red">20 ЛЕТ</strong></p>
             <p class="hero-subtitle sub fire">Противопожарная безопасность</p>
+            <p class="hero-subtitle sub safety">Системы безопасности и связи</p>
             <p class="hero-subtitle sub electro">Электромонтажные работы</p>
             <p class="hero-subtitle sub lab">Электротехническая лаборатория</p>
         </div>
@@ -75,8 +76,9 @@
                           <li class="filter-item all_services" data-filter="all">Все услуги</li>
                           <li class="filter-item design_services">Проектирование</li>
                           <li class="filter-item montage_services">Монтаж</li>
-                          <li class="filter-item service_services">Обслуживание</li>
-                          <li class="filter-item other_services">Дополнительные услуги</li>
+                          <li class="filter-item service_services">Техническое обслуживание</li>
+                          <li class="filter-item fireFight_services">Противопожарная безопасность</li>
+                          <li class="filter-item electroLab_services">Услуги электролаборатории</li>
                       </ul>
                   </div>
                   <!-- Правая часть - список всех услуг -->
@@ -94,16 +96,22 @@
             <div class="about-text-block">
                 <h2 class="about-title">О нас</h2>
                 <div class="about-description">
-                    <p>Мы работаем на рынке противопожарных услуг с 2005 года. За это время мы реализовали более 2000 проектов различной сложности: от небольших офисов до крупных промышленных объектов.</p>
+                    <p>Мы работаем на рынке противопожарных услуг с 2006 года. За это время мы
+реализовали более 2000 проектов различной сложности: от небольших офисов до
+крупных промышленных объектов.</p>
                     
-                    <p>Наша компания имеет все необходимые лицензии и сертификаты МЧС России на проведение работ по монтажу, ремонту и обслуживанию систем противопожарной защиты. Мы являемся официальными партнерами ведущих производителей противопожарного оборудования.</p>
+                    <p>Наша компания имеет все необходимые лицензии и сертификаты МЧС России
+разрешительные документы на проведение работ по монтажу, ремонту и техническому
+обслуживанию систем противопожарной защиты.</p>
                     
-                    <p>В штате компании работают только квалифицированные специалисты с многолетним опытом, регулярно проходящие повышение квалификации. Мы гарантируем качество выполняемых работ и несем полную ответственность за результат.</p>
+                    <p>В штате компании работают только квалифицированные специалисты с многолетним
+опытом, регулярно проходящие повышение квалификации. Мы гарантируем качество
+выполняемых работ и несем полную ответственность за результат.</p>
                 </div>
                 
                 <div class="about-stats">
                     <div class="stat-item">
-                        <div class="stat-number">2005</div>
+                        <div class="stat-number">2006</div>
                         <div class="stat-label">Год основания</div>
                     </div>
                     <div class="stat-item">
@@ -111,7 +119,7 @@
                         <div class="stat-label">Реализованных проектов</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number">50+</div>
+                        <div class="stat-number">20+</div>
                         <div class="stat-label">Сотрудников</div>
                     </div>
                 </div>
@@ -125,124 +133,12 @@
     <section class="contact-section mail" id="contact">
         <div class="contact-container">
             <h2 class="section-title">Если хотите, чтобы мы связались с Вами</h2>
-            <form class="contact-form" id="contactForm">
+            <form class="contact-form" id="contactForm" method="POST" action="/submit-contact">
                 <div class="form-group">
-                    <input type="tel" id="phone" name="phone" placeholder="Сообщите Ваш телефонный номер" required>
+                    <input type="tel" id="phone" name="phone" placeholder="Выберите удобный способ: телефон или email" required>
                 </div>
                 <button type="submit" class="submit-btn">Отправить</button>
             </form>
-        </div>
-    </section>
-
-    <!-- Секция с партнёрами -->
-    <section class="partners-section">
-        <div class="container_partners">
-            <h2 class="partners-title">Наши партнёры</h2>
-            <div class="partners-grid">
-                <!-- Карточка 1 -->
-                <div class="partner-card">
-                    <div class="partner-image">
-                        <img src="./partners-images/severstal.png" alt="Severstal">
-                    </div>
-                    <div class="partner-name">ПАО "Северсталь"</div>
-                </div>
-                
-                <!-- Карточка 2 -->
-                <div class="partner-card">
-                    <div class="partner-image">
-                        <img src="./partners-images/tgk1.jpg" alt="TGK1">
-                    </div>
-                    <div class="partner-name">ПАО "Территориальная генерирующая компания 1"</div>
-                </div>
-                
-                <!-- Карточка 3 -->
-                <div class="partner-card">
-                    <div class="partner-image">
-                        <img src="./partners-images/фсб.jpg" alt="FSB">
-                    </div>
-                    <div class="partner-name">ФСБ России Пограничное управление по Западному Арктическому району</div>
-                </div>
-                
-                <!-- Карточка 4 -->
-                <div class="partner-card">
-                    <div class="partner-image">
-                        <img src="./partners-images/Olegorsk.jpg" alt="Olenegorsk">
-                    </div>
-                    <div class="partner-name">Администрация города Оленегорска</div>
-                </div>
-                
-                <!-- Карточка 5 -->
-                <div class="partner-card">
-                    <div class="partner-image">
-                        <img src="./partners-images/lovozero.jpg" alt="Olenegorsk">
-                    </div>
-                    <div class="partner-name">Администрация Ловозерского района</div>
-                </div>
-                
-                <!-- Карточка 6 -->
-                <div class="partner-card">
-                    <div class="partner-image">
-                        <img src="./partners-images/partner.png" alt="Название предприятия 6">
-                    </div>
-                    <div class="partner-name">ЗАО "Охранные Системы"</div>
-                </div>
-                
-                <!-- Карточка 7 -->
-                <div class="partner-card">
-                    <div class="partner-image">
-                        <img src="./partners-images/partner.png" alt="Название предприятия 7">
-                    </div>
-                    <div class="partner-name">ООО "СпецСтройМонтаж"</div>
-                </div>
-                
-                <!-- Карточка 8 -->
-                <div class="partner-card">
-                    <div class="partner-image">
-                        <img src="./partners-images/partner.png" alt="Название предприятия 8">
-                    </div>
-                    <div class="partner-name">АО "Технический Надзор"</div>
-                </div>
-                
-                <!-- Карточка 9 -->
-                <div class="partner-card">
-                    <div class="partner-image">
-                        <img src="./partners-images/partner.png" alt="Название предприятия 9">
-                    </div>
-                    <div class="partner-name">ООО "Пожарный Контроль"</div>
-                </div>
-                
-                <!-- Карточка 10 -->
-                <div class="partner-card">
-                    <div class="partner-image">
-                        <img src="./partners-images/partner.png" alt="Название предприятия 10">
-                    </div>
-                    <div class="partner-name">ЗАО "Безопасность Решений"</div>
-                </div>
-                
-                <!-- Карточка 11 -->
-                <div class="partner-card">
-                    <div class="partner-image">
-                        <img src="./partners-images/technoservisplus.jpg" alt="Название предприятия 11">
-                    </div>
-                    <div class="partner-name">ООО "ТехноСервис Плюс"</div>
-                </div>
-                
-                <!-- Карточка 12 -->
-                <div class="partner-card">
-                    <div class="partner-image">
-                        <img src="./partners-images/partner.png" alt="Название предприятия 12">
-                    </div>
-                    <div class="partner-name">АО "Проектные Системы"</div>
-                </div>
-                
-                <!-- Карточка 13 -->
-                <div class="partner-card">
-                    <div class="partner-image">
-                        <img src="./partners-images/partner.png" alt="Название предприятия 13">
-                    </div>
-                    <div class="partner-name">ООО "МонтажСпецСервис"</div>
-                </div>
-            </div>
         </div>
     </section>
 

@@ -244,6 +244,15 @@ section + section {
   vertical-align: middle;
 }
 
+.safety::before {
+  content: url(/icons/safety.png);
+  width: 32px;
+  height: 32px;
+  background-size: contain;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
 .lab::before {
   content: url(/icons/lab.png);
   width: 32px;

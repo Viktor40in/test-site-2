@@ -1,22 +1,33 @@
 //Импорт списка услуг
 import { servicesData, servicesData_full } from "./servicesData.js";
 
+//Форма для связи 
+const form = document.getElementById('contactForm');
+
 //ОТПРАВКА ФОРМЫ
-document.getElementById('contactForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  
-  // Получаем данные формы
-  const phone = document.getElementById('phone').value;
-  const email = document.getElementById('email').value;
-  
-  // Здесь можно добавить AJAX-запрос или другую обработку
-  console.log('Отправлены данные:', { phone, email });
-  
-  // Оповещение пользователя
-  alert('Спасибо! Мы свяжемся с вами в ближайшее время.');
-  
-  // Очистка формы
-  this.reset();
+document.getElementById('contactForm').addEventListener('submit', async (e) => {
+    e.preventDefault(); 
+
+    const formData = new FormData(form);
+    // Превращаем данные формы в обычный объект для отправки
+    const data = Object.fromEntries(formData.entries());
+
+    alert('Спасибо! Мы скоро свяжемся с Вами!');
+    form.reset();
+    try {
+        const response = await fetch('/submit-contact', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json' // Указываем, что шлем JSON
+            },
+            body: JSON.stringify(data) 
+        });
+
+        const result = await response.json();
+    } 
+    catch (error) {
+        console.error('Ошибка:', error);
+    }
 });
 
 
@@ -143,27 +154,54 @@ const button_allServices = document.querySelector('.all_services');
 const button_designServices = document.querySelector('.design_services');
 const button_montageServices = document.querySelector('.montage_services');  
 const button_serviceServices = document.querySelector('.service_services');
-const button_otherServices = document.querySelector('.other_services');
+const button_fireFightServices = document.querySelector('.fireFight_services');
+const button_electroLabServices = document.querySelector('.electroLab_services');
 
 //Генерация списка услуг для модального окна
-function generateServicesList(data) {
+function generateServicesList(data, category) {
     servicesList.innerHTML = '';
     data.forEach(service => {
         const item = document.createElement('div');
         item.className = 'service-modal-item';
         item.innerHTML = `
           <h3 class="service-modal-title">${service.title}</h3>
-          <span class="service-modal-category">${service.category}</span>
+          <span class="service-modal-category">${category}</span>
         `;
         servicesList.appendChild(item);
     });
 };
+function generateAllServicesList(data) {
+    servicesList.innerHTML = '';
+    data.forEach(service => {
+        if(service.id < 8){
+          const item = document.createElement('div');
+          item.className = 'service-modal-item';
+          item.innerHTML = 
+          `
+            <h3 class="service-modal-title">${service.title}</h3>
+            <span class="service-modal-category">Проектирование</span>
+            <span class="service-modal-category">Монтаж</span>
+            <span class="service-modal-category">Техническое обслуживание</span>
+          `;
+          servicesList.appendChild(item);
+        } else {
+          const item = document.createElement('div');
+          item.className = 'service-modal-item';
+          item.innerHTML = `
+            <h3 class="service-modal-title">${service.title}</h3>
+            <span class="service-modal-category">${service.category}</span>
+          `;
+          servicesList.appendChild(item);
+        }     
+    });
+};
+
 
 //Открытие модального окна
 allServicesBtn.addEventListener('click', function() {
     modalServices.style.display = 'flex';
     document.body.style.overflow = 'hidden';
-    generateServicesList(servicesData_full);
+    generateAllServicesList(servicesData_full);
     const closeBtn = document.querySelector('.close-btn');
     modalServices.addEventListener('click', function(e) {
     // Проверяем, является ли модальное окно целью или его родителем
@@ -179,7 +217,7 @@ allServicesBtn.addEventListener('click', function() {
 
 //Реализация фильтров
 button_allServices.addEventListener('click', function(){
-  generateServicesList(servicesData_full);
+  generateAllServicesList(servicesData_full);
 })
 
 button_designServices.addEventListener('click', function(){
@@ -187,32 +225,42 @@ button_designServices.addEventListener('click', function(){
     if(item.category === "Проектирование"){
       return item;
     }
-  }))
+  }), "Проектирование")
 })
 
 button_montageServices.addEventListener('click', function(){
   generateServicesList(servicesData_full.filter(function(item){
-    if(item.category === "Монтаж"){
+    if(item.category2 === "Монтаж"){
       return item;
     }
-  }))
+  }), "Монтаж")
 })
 
 button_serviceServices.addEventListener('click', function(){
   generateServicesList(servicesData_full.filter(function(item){
-    if(item.category === "Обслуживание"){
+    if(item.category3 === "Техническое обслуживание"){
       return item;
     }
-  }))
+  }), "Техническое обслуживание")
 })
 
-button_otherServices.addEventListener('click', function(){
+button_fireFightServices.addEventListener('click', function(){
   generateServicesList(servicesData_full.filter(function(item){
-    if(item.category === "Дополнительные услуги"){
+    if(item.category === "Противопожарная безопасность"){
       return item;
     }
-  }))
+  }), "Противопожарная безопасность")
 })
+
+button_electroLabServices.addEventListener('click', function(){
+  generateServicesList(servicesData_full.filter(function(item){
+    if(item.category === "Услуги электролаборатории"){
+      return item;
+    }
+  }), "Услуги электролаборатории")
+})
+
+
 
 
 //      ИНТЕРАКТИВНАЯ КАРТА
