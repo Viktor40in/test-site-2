@@ -104,13 +104,16 @@ const allServicesBtn = document.getElementById('allServicesBtn');
 })();
 
 //Отрытие фильрованного списка услуг при нажатии на заголовок карточки
+
 //Набор DOM-элементов с параметром-классом
 const designCards = document.querySelectorAll('.design');
 const montageCards = document.querySelectorAll('.montage');
 const serviceCards = document.querySelectorAll('.service');
 const additionalCards = document.querySelectorAll('.additional');
+
 //Массив с параметрами сотрировки карточек при открытии модального окна
 const categories_array = ["Проектирование", "Монтаж", "Обслуживание", "Дополнительные услуги"];
+
 //Функция для накладываения эвента-нажатия по загаловку карточки
 function eventFilterOnCardTitle(cards, category){
   cards.forEach(card => {
@@ -133,7 +136,7 @@ function eventFilterOnCardTitle(cards, category){
                       document.body.style.overflow = 'auto';
                   }
               }
-        });
+          });
       })
   })
 }
@@ -170,6 +173,7 @@ function generateServicesList(data, category) {
         servicesList.appendChild(item);
     });
 };
+
 function generateAllServicesList(data) {
     servicesList.innerHTML = '';
     data.forEach(service => {
