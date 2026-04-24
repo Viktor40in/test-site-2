@@ -112,8 +112,6 @@ const serviceCards = document.querySelectorAll('.service');
 const fireBorn = document.querySelectorAll('.fireBorn');
 const electroLab = document.querySelectorAll('.electroLab');
 
-// const additionalCards = document.querySelectorAll('.additional'); //!!! посмотри нужна ли эта переменная 
-
 //Массив с параметрами сотрировки карточек при открытии модального окна
 const categories_array = ["Проектирование", "Монтаж", "Техническое обслуживание", "Противопожарная безопасность", "Услуги электролаборатории"];
 
@@ -144,7 +142,7 @@ function eventFilterOnCardTitle(cards, category){
   })
 }
 
-//Функция выше для каждого типа услуг-карточек
+//Функция накладываения эвента-нажатия для каждого типа услуг-карточек
 eventFilterOnCardTitle(designCards, categories_array[0]);
 eventFilterOnCardTitle(montageCards, categories_array[1]);
 eventFilterOnCardTitle(serviceCards, categories_array[2]);
