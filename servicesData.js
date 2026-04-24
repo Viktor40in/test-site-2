@@ -122,7 +122,7 @@ export const servicesData_full = [
     category: "Проектирование",
     category2: "Монтаж",
     category3: "Техническое обслуживание",
-    class: "design",    
+    class: "montage",    
     image: "url('./icons/montage.png')"
   },
   {
@@ -131,49 +131,56 @@ export const servicesData_full = [
     category: "Проектирование",
     category2: "Монтаж",
     category3: "Техническое обслуживание",
-    class: "design",    
+    class: "montage",    
     image: "url('./icons/montage.png')"
   },
   {
     id: 4,
     title: "Техническое обслуживание систем охрано-пожарной сигнализации (ОПС), оповещения о пожаре и управления эвакуацией (СОУЭ), пожаротушения (АУПТ)",
     category: "Противопожарная безопасность",
+    class: "service",
     image: "url('./icons/homework.png')"
   },
   {
     id: 5,
     title: "Огнезащитная обработка деревянных конструкций и тканей",
     category: "Противопожарная безопасность",
+    class: "fireBorn",
     image: "url('./icons/antifire-tank.png')"
   },
   {
     id: 6,
     title: "Проверка качества огнезащитной обработки",
     category: "Противопожарная безопасность",
+    class: "fireBorn",
     image: "url('./icons/antifire-tank.png')"
   },
   {
     id: 7,
     title: "Испытание внутреннего пожарного водопровода и перекатка пожарных рукавов",
     category: "Противопожарная безопасность",
+    class: "fireBorn",
     image: "url('./icons/antifire-tank.png')"
   },
   {
     id: 8,
     title: "Техническое обслуживание и перезарядка огнетушителей",
     category: "Противопожарная безопасность",
+    class: "fireBorn",
     image: "url('./icons/antifire-tank.png')"
   },
   {
     id: 9,
     title: "Электрические испытания средств индивидуальной защиты",
     category: "Услуги электролаборатории",
+    class: "electroLab",
     image: "url('./icons/electro-lab.png')"
   },
   {
     id: 10,
     title: "Испытания и измерения в электроустановках до и свыше 1000 В",
     category: "Услуги электролаборатории",
+    class: "electroLab",
     image: "url('./icons/electro-lab.png')"
   }
 ];

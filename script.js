@@ -62,11 +62,11 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-
-
 //      СЕКЦИЯ УСЛУГ
+
 //слайдер услуг
 const servicesWrapper = document.querySelector('.services-wrapper');
+
 //Стрелки и их функции
 const leftArrow = document.querySelector('.left-arrow');
 const rightArrow = document.querySelector('.right-arrow');
@@ -109,10 +109,13 @@ const allServicesBtn = document.getElementById('allServicesBtn');
 const designCards = document.querySelectorAll('.design');
 const montageCards = document.querySelectorAll('.montage');
 const serviceCards = document.querySelectorAll('.service');
-const additionalCards = document.querySelectorAll('.additional');
+const fireBorn = document.querySelectorAll('.fireBorn');
+const electroLab = document.querySelectorAll('.electroLab');
+
+// const additionalCards = document.querySelectorAll('.additional'); //!!! посмотри нужна ли эта переменная 
 
 //Массив с параметрами сотрировки карточек при открытии модального окна
-const categories_array = ["Проектирование", "Монтаж", "Обслуживание", "Дополнительные услуги"];
+const categories_array = ["Проектирование", "Монтаж", "Техническое обслуживание", "Противопожарная безопасность", "Услуги электролаборатории"];
 
 //Функция для накладываения эвента-нажатия по загаловку карточки
 function eventFilterOnCardTitle(cards, category){
@@ -121,11 +124,11 @@ function eventFilterOnCardTitle(cards, category){
           modalServices.style.display = 'flex';
           document.body.style.overflow = 'hidden';
           const filteredData = servicesData_full.filter(function(item){
-              if(item.category === category){
+              if(item.category === category || item.category2 === category || item.category3 === category){
                   return item;
               }
           })
-          generateServicesList(filteredData)
+          generateServicesList(filteredData, category);
           const closeBtn = document.querySelector('.close-btn');
           modalServices.addEventListener('click', function(e) {
           // Проверяем, является ли модальное окно целью или его родителем
@@ -140,11 +143,13 @@ function eventFilterOnCardTitle(cards, category){
       })
   })
 }
+
 //Функция выше для каждого типа услуг-карточек
 eventFilterOnCardTitle(designCards, categories_array[0]);
 eventFilterOnCardTitle(montageCards, categories_array[1]);
 eventFilterOnCardTitle(serviceCards, categories_array[2]);
-eventFilterOnCardTitle(additionalCards, categories_array[3]);
+eventFilterOnCardTitle(fireBorn, categories_array[3]);
+eventFilterOnCardTitle(electroLab, categories_array[4]);
 
 //Раскрывающееся модальное окно списка услуг
 //Модальное окно
@@ -174,6 +179,7 @@ function generateServicesList(data, category) {
     });
 };
 
+//Генерация списка услуг под фильтр "Все услуги"
 function generateAllServicesList(data) {
     servicesList.innerHTML = '';
     data.forEach(service => {
