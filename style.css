@@ -227,7 +227,7 @@ section + section {
 }
 
 .fire::before {
-  content: url(/icons/fire.png);
+  content: url(./icons/fire.png);
   width: 32px;
   height: 32px;
   background-size: contain;
@@ -236,7 +236,7 @@ section + section {
 }
 
 .electro::before {
-  content: url(/icons/electro.png);
+  content: url(./icons/electro.png);
   width: 32px;
   height: 32px;
   background-size: contain;
@@ -245,7 +245,7 @@ section + section {
 }
 
 .safety::before {
-  content: url(/icons/safety.png);
+  content: url(./icons/safety.png);
   width: 32px;
   height: 32px;
   background-size: contain;
@@ -254,7 +254,7 @@ section + section {
 }
 
 .lab::before {
-  content: url(/icons/lab.png);
+  content: url(./icons/lab.png);
   width: 32px;
   height: 32px;
   background-size: contain;

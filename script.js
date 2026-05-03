@@ -111,9 +111,10 @@ const montageCards = document.querySelectorAll('.montage');
 const serviceCards = document.querySelectorAll('.service');
 const fireBorn = document.querySelectorAll('.fireBorn');
 const electroLab = document.querySelectorAll('.electroLab');
+const otherWorks = document.querySelectorAll('.otherworks');
 
 //Массив с параметрами сотрировки карточек при открытии модального окна
-const categories_array = ["Проектирование", "Монтаж", "Техническое обслуживание", "Противопожарная безопасность", "Услуги электролаборатории"];
+const categories_array = ["Проектирование", "Монтаж", "Техническое обслуживание", "Противопожарная безопасность", "Услуги электролаборатории", "Дополнительные услуги"];
 
 //Функция для накладываения эвента-нажатия по загаловку карточки
 function eventFilterOnCardTitle(cards, category){
@@ -148,6 +149,7 @@ eventFilterOnCardTitle(montageCards, categories_array[1]);
 eventFilterOnCardTitle(serviceCards, categories_array[2]);
 eventFilterOnCardTitle(fireBorn, categories_array[3]);
 eventFilterOnCardTitle(electroLab, categories_array[4]);
+eventFilterOnCardTitle(otherWorks, categories_array[5]);
 
 //Раскрывающееся модальное окно списка услуг
 //Модальное окно
@@ -162,6 +164,7 @@ const button_montageServices = document.querySelector('.montage_services');
 const button_serviceServices = document.querySelector('.service_services');
 const button_fireFightServices = document.querySelector('.fireFight_services');
 const button_electroLabServices = document.querySelector('.electroLab_services');
+const button_otherWorksServices = document.querySelector('.otherWorks_services');
 
 //Генерация списка услуг для модального окна
 function generateServicesList(data, category) {
@@ -266,6 +269,14 @@ button_electroLabServices.addEventListener('click', function(){
       return item;
     }
   }), "Услуги электролаборатории")
+})
+
+button_otherWorksServices.addEventListener('click', function(){
+  generateServicesList(servicesData_full.filter(function(item){
+    if(item.category === "Дополнительные услуги"){
+      return item;
+    }
+  }), "Дополнительные услуги")
 })
 
 
